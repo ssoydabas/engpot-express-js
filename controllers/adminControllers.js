@@ -1,6 +1,4 @@
-import {
-  emailValidation,
-} from "../util/validation/validation.js";
+import { emailValidation } from "../util/validation/validation.js";
 
 import {
   preventDataLossDueToEmptyFieldsForNumericValues as preventDataLoss,
@@ -10,14 +8,13 @@ import {
 import User from "../models/user.js";
 import TeacherStudent from "../models/teacherStudent.js";
 import ErasedUser from "../models/erasedUser.js";
-import StudentsFromEmailMe from "../models/studentsFromEmailMe.js"
+import StudentsFromEmailMe from "../models/studentsFromEmailMe.js";
 
 import winston from "../util/winston/winston.js";
 import { sendMail, emailMe } from "../util/nodeMailer/nodeMailerConfig.js";
 import customEmails from "../util/nodeMailer/customEmails.js";
 
 import mongoose from "mongoose";
-import jwt from "jsonwebtoken";
 
 export const get_fetchAllUsers = async (req, res, next) => {
   try {
@@ -64,7 +61,7 @@ export const post_editUserInfo = async (req, res, next) => {
   try {
     const updatedUserInfo = { ...req.body };
     const { adminId } = req.body;
-    
+
     if (
       updatedUserInfo.personalInfo.name === "" ||
       updatedUserInfo.personalInfo.surname === ""
@@ -84,7 +81,9 @@ export const post_editUserInfo = async (req, res, next) => {
       throw error;
     }
 
-    const user = await User.findById(mongoose.Types.ObjectId(updatedUserInfo.userId));
+    const user = await User.findById(
+      mongoose.Types.ObjectId(updatedUserInfo.userId)
+    );
     const admin = await User.findById(mongoose.Types.ObjectId(adminId));
 
     if (
@@ -219,20 +218,14 @@ export const post_assignStudentToTeacher = async (req, res, next) => {
 
       sendMail(
         teacher.personalInfo.emailInfo.email,
-        customEmails.admin.assignStudent.forTeacher
-          .title,
-        customEmails.admin.assignStudent.forTeacher.text(
-          student
-        )
+        customEmails.admin.assignStudent.forTeacher.title,
+        customEmails.admin.assignStudent.forTeacher.text(student)
       );
 
       sendMail(
         student.personalInfo.emailInfo.email,
-        customEmails.admin.assignStudent.forStudent
-          .title,
-        customEmails.admin.assignStudent.forStudent.text(
-          teacher
-        )
+        customEmails.admin.assignStudent.forStudent.title,
+        customEmails.admin.assignStudent.forStudent.text(teacher)
       );
     } else {
       const error = new Error(
@@ -297,17 +290,13 @@ export const post_removeTeacherFromStudent = async (req, res, next) => {
     sendMail(
       teacher.personalInfo.emailInfo.email,
       customEmails.admin.removeTeacher.forTeacher.title,
-      customEmails.admin.removeTeacher.forTeacher.text(
-        student
-      )
+      customEmails.admin.removeTeacher.forTeacher.text(student)
     );
 
     sendMail(
       student.personalInfo.emailInfo.email,
       customEmails.admin.removeTeacher.forStudent.title,
-      customEmails.admin.removeTeacher.forStudent.text(
-        teacher
-      )
+      customEmails.admin.removeTeacher.forStudent.text(teacher)
     );
   } catch (err) {
     next(err);
@@ -401,40 +390,39 @@ export const get_findTeacherByStudentId = async (req, res, next) => {
   }
 };
 
-export const post_emailMe = async (res,req,next) => {
-    try {
+export const post_emailMe = async (res, req, next) => {
+  try {
+    const { givenEmail } = req.body;
 
-        const {givenEmail} = req.body;
-
-        
-        if (!emailValidation(givenEmail)) {
-            const error = new Error("Please enter a valid email.");
-            error.statusCode = 422;
-            throw error;
-        }
-
-        const doesEmailAlreadyExist = await StudentsFromEmailMe.findOne({email: givenEmail});
-
-        if (doesEmailAlreadyExist) {
-            const error = new Error("Your email has already been put in our contact list, our admin will contact you soon.");
-            error.statusCode = 422;
-            throw error;
-        }
-
-        const studentsFromEmailMe = new StudentsFromEmailMe({email: givenEmail});
-
-        await studentsFromEmailMe.save();
-
-        res.status(200).json({
-            message: "Our admin will contact you as soon as possible.",
-        });
-
-        // * Mail the admin(s)
-        emailMe(givenEmail);
-        
-    } catch (err) {
-        
-        next(err);
-
+    if (!emailValidation(givenEmail)) {
+      const error = new Error("Please enter a valid email.");
+      error.statusCode = 422;
+      throw error;
     }
+
+    const doesEmailAlreadyExist = await StudentsFromEmailMe.findOne({
+      email: givenEmail,
+    });
+
+    if (doesEmailAlreadyExist) {
+      const error = new Error(
+        "Your email has already been put in our contact list, our admin will contact you soon."
+      );
+      error.statusCode = 422;
+      throw error;
+    }
+
+    const studentsFromEmailMe = new StudentsFromEmailMe({ email: givenEmail });
+
+    await studentsFromEmailMe.save();
+
+    res.status(200).json({
+      message: "Our admin will contact you as soon as possible.",
+    });
+
+    // * Mail the admin(s)
+    emailMe(givenEmail);
+  } catch (err) {
+    next(err);
+  }
 };

@@ -1,5 +1,3 @@
-import User from "../models/user.js";
-
 import jwt from "jsonwebtoken";
 
 export const routeProtection = async (req, res, next) => {
@@ -57,6 +55,24 @@ export const teacherProtection = async (req, res, next) => {
 
     if (protectionInformation.userStatus !== "teacher") {
       const error = new Error("Only teachers are allowed to reach this route.");
+      error.statusCode = 422;
+      throw error;
+    }
+
+    req.locals = { ...req.locals, protectionInformation };
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const student_teacherProtection = async (req, res, next) => {
+  try {
+    const authenticationToken = req.get("Authorization").split(" ")[1];
+    const protectionInformation = jwt.verify(authenticationToken, process.env.JWT_SECRET);
+
+    if (protectionInformation.userStatus !== "student" && protectionInformation.userStatus !== "teacher") {
+      const error = new Error("Only students and teachers are allowed to reach this route.");
       error.statusCode = 422;
       throw error;
     }

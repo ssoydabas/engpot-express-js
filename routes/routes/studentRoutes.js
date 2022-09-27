@@ -6,15 +6,16 @@ import {
   post_doAssignment,
 } from "../../controllers/studentControllers.js";
 
+import { studentProtection, student_teacherProtection } from "../routeProtection.js"
+
 const router = express.Router();
 
-router.get("/getLessonHistory", get_lessonHistory);
+router.get("/getLessonHistory", student_teacherProtection, get_lessonHistory);
 
-router.get("/getAssignmentHistory", get_assignmentHistory);
+router.get("/getAssignmentHistory", student_teacherProtection, get_assignmentHistory);
 
-router.get("/getSingleAssignmentHistory/:assignmentId", get_singleAssignmentHistory
-);
+router.get("/getSingleAssignmentHistory/:assignmentId", student_teacherProtection, get_singleAssignmentHistory);
 
-router.post("/doAssignment", post_doAssignment);
+router.post("/doAssignment", studentProtection, post_doAssignment);
 
 export default router;
