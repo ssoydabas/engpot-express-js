@@ -1,23 +1,31 @@
 {
   "name": "engpot-express-api",
   "version": "1.0.0",
-  "description": "Engpot_English_API",
+  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "set NODE_ENV=development & nodemon engpot_api.js",
+    "start-production": "set NODE_ENV=production & node engpot_api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Sertan Soydabas",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "googleapis": "^108.0.0",
+    "googleapis": "^107.0.0",
     "helmet": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.2",
+    "mongoose": "^6.6.0",
     "nodemailer": "^6.7.8",
     "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "nodemon": "^2.0.19"
   }
 }
