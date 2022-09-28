@@ -63,7 +63,7 @@ export const post_login = async (req, res, next) => {
       jwt.sign(
         { id: user._id, email: user.personalInfo.emailInfo.email, userStatus: user.engPotInfo.status },
         process.env.JWT_SECRET,
-        { algorithm: "HS256", expiresIn: "1hr" },
+        { algorithm: "HS256", expiresIn: "8760hr" },
         (err, token) => {
           if (err) {
             console.log(err);

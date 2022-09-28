@@ -7092,3 +7092,5 @@
 {"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"09-27-22 11:09:40"}
 {"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has concluded a lesson for student.","timestamp":"09-27-22 11:09:78"}
 {"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"09-27-22 11:09:94"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"09-27-22 12:09:97"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has signed in.","timestamp":"09-28-22 11:09:54"}
