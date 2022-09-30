@@ -7094,3 +7094,15 @@
 {"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"09-27-22 11:09:94"}
 {"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"09-27-22 12:09:97"}
 {"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has signed in.","timestamp":"09-28-22 11:09:54"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has signed in.","timestamp":"09-28-22 11:09:03"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has signed in.","timestamp":"09-28-22 11:09:47"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"09-28-22 12:09:79"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has planned a lesson for student.","timestamp":"09-28-22 12:09:24"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has concluded a lesson for student.","timestamp":"09-28-22 12:09:73"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has added an assignment for student. (Assignment Title: ass 3 Assignment ID: 6334167e46ab6ccf4b2cfb0e)","timestamp":"09-28-22 12:09:52"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has added an assignment for student. (Assignment Title: 1st Assignment ID: 63341c2146ab6ccf4b2cfb45)","timestamp":"09-28-22 13:09:09"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has added an assignment for student. (Assignment Title: 2nd Assignment ID: 63341c2846ab6ccf4b2cfb4e)","timestamp":"09-28-22 13:09:37"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to student@student.com - User has signed in.","timestamp":"09-28-22 13:09:12"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to student@student.com - User has signed in.","timestamp":"09-28-22 13:09:71"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to student2@student2.com - User has signed in.","timestamp":"09-28-22 13:09:79"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"09-28-22 13:09:40"}
