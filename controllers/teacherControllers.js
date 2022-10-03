@@ -41,7 +41,6 @@ export const get_studentsByTeacherId = async (req, res, next) => {
 export const post_planLesson = async (req, res, next) => {
   try {
     const data = req.body;
-    console.log(data);
 
     const { studentId } = data;
 
@@ -57,25 +56,6 @@ export const post_planLesson = async (req, res, next) => {
     const { date } = data;
     const { time } = data;
     const { timestamp } = data;
-
-    // const lessonStart = new Date(
-    //   Date.UTC(
-    //     date.split("-")[0],
-    //     date.split("-")[1] - 1,
-    //     date.split("-")[2],
-    //     time.split(":")[0],
-    //     time.split(":")[1]
-    //   )
-    // );
-    // const lessonEnd = new Date(
-    //   Date.UTC(
-    //     date.split("-")[0],
-    //     date.split("-")[1] - 1,
-    //     date.split("-")[2],
-    //     time.split(":")[0],
-    //     time.split(":")[1]
-    //   ) + 3600000
-    // );
 
     if (!social && !tense && !structure && !extra) {
       const error = new Error("At least one field is required.");
@@ -112,35 +92,35 @@ export const post_planLesson = async (req, res, next) => {
       throw error;
     }
 
-    // let publicSchedule = await PublicSchedule.findOne({ userId: teacher._id });
-    // if (!publicSchedule) {
-    //   publicSchedule = new PublicSchedule({
-    //     userId: teacher._id,
-    //   });
-    // }
+    let publicSchedule = await PublicSchedule.findOne({ userId: teacher._id });
+    if (!publicSchedule) {
+      publicSchedule = new PublicSchedule({
+        userId: teacher._id,
+      });
+    }
 
-    // const checkEvent_before = new Date(lessonStart).getTime() - 3600000;
-    // const checkEvent_after = new Date(lessonStart).getTime() + 3600000;
+    const checkEvent_before = new Date(timestamp).getTime() - 3600000;
+    const checkEvent_after = new Date(timestamp).getTime() + 3600000; // Time the lesson ends
 
-    // if (publicSchedule.events.length > 0) {
-    //   for (let e of publicSchedule.events) {
-    //     const timestamp = new Date(e.start).getTime();
-    //     if (timestamp > checkEvent_before && timestamp < checkEvent_after) {
-    //       const error = new Error(
-    //         "Requested time is already occupied in your schedule."
-    //       );
-    //       error.statusCode = 422;
-    //       throw error;
-    //     }
-    //   }
-    // }
-    // const newEvent = {
-    //   id: lessonStart,
-    //   start: lessonStart,
-    //   end: lessonEnd,
-    //   title: `${student.personalInfo.name} ${student.personalInfo.surname}`,
-    // };
-    // publicSchedule.events.push(newEvent);
+    if (publicSchedule.events.length > 0) {
+      for (let e of publicSchedule.events) {
+        const timestamp = new Date(e.start).getTime();
+        if (timestamp > checkEvent_before && timestamp < checkEvent_after) {
+          const error = new Error(
+            "Requested time is already occupied in your schedule."
+          );
+          error.statusCode = 422;
+          throw error;
+        }
+      }
+    }
+    const newEvent = {
+      id: timestamp,
+      start: timestamp,
+      end: new Date(checkEvent_after),
+      title: `${student.personalInfo.name} ${student.personalInfo.surname}`,
+    };
+    publicSchedule.events.push(newEvent);
 
     updateStudentNextLesson(
       student,
@@ -152,7 +132,7 @@ export const post_planLesson = async (req, res, next) => {
     );
 
     await student.save();
-    // await publicSchedule.save();
+    await publicSchedule.save();
 
     winston.userActivityLog(
       "Planning a lesson",

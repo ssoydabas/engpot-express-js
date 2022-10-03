@@ -19,6 +19,7 @@ export const get_fetchPublicSchedule = async (req, res, next) => {
         userId: userId,
       });
     }
+
     res.status(200).json({
       publicSchedule,
     });
