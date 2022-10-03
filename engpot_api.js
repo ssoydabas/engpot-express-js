@@ -30,10 +30,12 @@ app.use(bodyParser.json());
 
 app.use(setHeaders);
 
+app.use(routes.userRoutes);
 app.use(routes.adminRoutes);
 app.use(routes.authRoutes);
 app.use(routes.studentRoutes);
 app.use(routes.teacherRoutes);
+app.use(routes.scheduleRoutes);
 app.use(routes.errorRoutes);
 
 connectDatabase(app);
