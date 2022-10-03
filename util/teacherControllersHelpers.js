@@ -1,10 +1,6 @@
-export const updateStudentNextLesson = (student, date, time, social, tense, structure, extra) => {
+export const updateStudentNextLesson = (student, timestamp, social, tense, structure, extra) => {
 
-    // console.log(
-    //     new Date(Date.UTC(date.split("-")[0], date.split("-")[1]-1, date.split("-")[2], time.split(":")[0], time.split(":")[1]))
-    // );
-    
-    student.engPotInfo.nextLesson.date = new Date(Date.UTC(date.split("-")[0], date.split("-")[1]-1, date.split("-")[2], time.split(":")[0], time.split(":")[1]));
+    student.engPotInfo.nextLesson.date = new Date(timestamp);
 
     student.engPotInfo.nextLesson.subjects = {
         social: social,

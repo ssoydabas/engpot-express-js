@@ -1,7 +1,6 @@
 import express from "express";
 import {
   get_studentsByTeacherId,
-  get_scheduleByTeacherId,
   post_planLesson,
   post_concludeLesson,
   post_planSpeakingLesson,
@@ -15,9 +14,6 @@ import { teacherProtection } from "../routeProtection.js";
 const router = express.Router();
 
 router.get("/studentsByTeacherId/:teacherId", teacherProtection, get_studentsByTeacherId);
-
-router.get("/scheduleByTeacherId/:teacherId", teacherProtection, get_scheduleByTeacherId);
-
 
 router.post("/planLesson", teacherProtection, post_planLesson);
 

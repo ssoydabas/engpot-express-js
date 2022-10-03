@@ -8,6 +8,8 @@ import TeacherStudent from "../models/teacherStudent.js";
 import LessonHistory from "../models/studentModels/lessonHistory.js";
 import Assignment from "../models/studentModels/assignment.js";
 
+import PublicSchedule from "../models/scheduleModels/publicScheduleModel/publicSchedule.js";
+
 import winston from "../util/winston/winston.js";
 import { sendMail } from "../util/nodeMailer/nodeMailerConfig.js";
 import customEmails from "../util/nodeMailer/customEmails.js";
@@ -36,23 +38,10 @@ export const get_studentsByTeacherId = async (req, res, next) => {
   }
 };
 
-export const get_scheduleByTeacherId = async (req, res, next) => {
-  try {
-    const { teacherId } = req.params;
-
-    const schedule = "";
-
-    res.status(200).json({
-      schedule,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
 export const post_planLesson = async (req, res, next) => {
   try {
     const data = req.body;
+    console.log(data);
 
     const { studentId } = data;
 
@@ -67,13 +56,33 @@ export const post_planLesson = async (req, res, next) => {
 
     const { date } = data;
     const { time } = data;
+    const { timestamp } = data;
+
+    // const lessonStart = new Date(
+    //   Date.UTC(
+    //     date.split("-")[0],
+    //     date.split("-")[1] - 1,
+    //     date.split("-")[2],
+    //     time.split(":")[0],
+    //     time.split(":")[1]
+    //   )
+    // );
+    // const lessonEnd = new Date(
+    //   Date.UTC(
+    //     date.split("-")[0],
+    //     date.split("-")[1] - 1,
+    //     date.split("-")[2],
+    //     time.split(":")[0],
+    //     time.split(":")[1]
+    //   ) + 3600000
+    // );
 
     if (!social && !tense && !structure && !extra) {
       const error = new Error("At least one field is required.");
       error.statusCode = 422;
       throw error;
     }
-    if (!date || !time) {
+    if (!date || !time || !timestamp) {
       const error = new Error("Lesson date and time are required.");
       error.statusCode = 422;
       throw error;
@@ -103,10 +112,39 @@ export const post_planLesson = async (req, res, next) => {
       throw error;
     }
 
+    // let publicSchedule = await PublicSchedule.findOne({ userId: teacher._id });
+    // if (!publicSchedule) {
+    //   publicSchedule = new PublicSchedule({
+    //     userId: teacher._id,
+    //   });
+    // }
+
+    // const checkEvent_before = new Date(lessonStart).getTime() - 3600000;
+    // const checkEvent_after = new Date(lessonStart).getTime() + 3600000;
+
+    // if (publicSchedule.events.length > 0) {
+    //   for (let e of publicSchedule.events) {
+    //     const timestamp = new Date(e.start).getTime();
+    //     if (timestamp > checkEvent_before && timestamp < checkEvent_after) {
+    //       const error = new Error(
+    //         "Requested time is already occupied in your schedule."
+    //       );
+    //       error.statusCode = 422;
+    //       throw error;
+    //     }
+    //   }
+    // }
+    // const newEvent = {
+    //   id: lessonStart,
+    //   start: lessonStart,
+    //   end: lessonEnd,
+    //   title: `${student.personalInfo.name} ${student.personalInfo.surname}`,
+    // };
+    // publicSchedule.events.push(newEvent);
+
     updateStudentNextLesson(
       student,
-      date,
-      time,
+      timestamp,
       social,
       tense,
       structure,
@@ -114,6 +152,7 @@ export const post_planLesson = async (req, res, next) => {
     );
 
     await student.save();
+    // await publicSchedule.save();
 
     winston.userActivityLog(
       "Planning a lesson",
@@ -170,13 +209,14 @@ export const post_concludeLesson = async (req, res, next) => {
 
     const { date } = data;
     const { time } = data;
+    const { timestamp } = data;
 
     if (!social && !tense && !structure && !extra) {
       const error = new Error("At least one field is required.");
       error.statusCode = 422;
       throw error;
     }
-    if (!date || !time) {
+    if (!date || !time || !timestamp) {
       const error = new Error("Lesson date and time are required.");
       error.statusCode = 422;
       throw error;
@@ -199,15 +239,7 @@ export const post_concludeLesson = async (req, res, next) => {
     const lessonHistory = new LessonHistory({
       studentId: studentId,
       teacherId: teacherId,
-      date: new Date(
-        Date.UTC(
-          date.split("-")[0],
-          date.split("-")[1] - 1,
-          date.split("-")[2],
-          time.split(":")[0],
-          time.split(":")[1]
-        )
-      ),
+      date: new Date(timestamp),
       subjects: {
         social: social,
         tense: tense,
@@ -300,9 +332,10 @@ export const post_planSpeakingLesson = async (req, res, next) => {
 
     const { date } = req.body;
     const { time } = req.body;
+    const { timestamp } = req.body;
     const { speakingSubjects } = req.body;
 
-    if (!date || !speakingSubjects) {
+    if (!date || !time || !timestamp || !speakingSubjects) {
       const error = new Error("All fields are required.");
       error.statusCode = 422;
       throw error;
@@ -312,15 +345,7 @@ export const post_planSpeakingLesson = async (req, res, next) => {
 
     student.engPotInfo.speakingLesson.doesHavePlannedSpeakingLesson = true;
     student.engPotInfo.speakingLesson.speakingSubjects = speakingSubjects;
-    student.engPotInfo.speakingLesson.date = new Date(
-      Date.UTC(
-        date.split("-")[0],
-        date.split("-")[1] - 1,
-        date.split("-")[2],
-        time.split(":")[0],
-        time.split(":")[1]
-      )
-    );
+    student.engPotInfo.speakingLesson.date = new Date(Date.UTC(timestamp));
 
     await student.save();
 
@@ -372,9 +397,10 @@ export const post_concludeSpeakingLesson = async (req, res, next) => {
 
     const { date } = req.body;
     const { time } = req.body;
+    const { timestamp } = req.body;
     const { speakingSubjects } = req.body;
 
-    if (!date || !time || !speakingSubjects) {
+    if (!date || !time || !timestamp || !speakingSubjects) {
       const error = new Error("All fields are required.");
       error.statusCode = 422;
       throw error;
@@ -383,15 +409,7 @@ export const post_concludeSpeakingLesson = async (req, res, next) => {
     const speakingLessonHistory = new SpeakingLesson({
       studentId: studentId,
       teacherId: teacherId,
-      date: new Date(
-        Date.UTC(
-          date.split("-")[0],
-          date.split("-")[1] - 1,
-          date.split("-")[2],
-          time.split(":")[0],
-          time.split(":")[1]
-        )
-      ),
+      date: new Date(timestamp),
       subjects: speakingSubjects,
       status: status,
     });
@@ -459,6 +477,7 @@ export const post_addAssignment = async (req, res, next) => {
       "'"
     );
     const { assignmentDeadline } = data;
+    const { timestamp } = data;
 
     if (!assignmentTitle || !assignmentInstructions) {
       const error = new Error("Assignment information is required.");
@@ -478,13 +497,7 @@ export const post_addAssignment = async (req, res, next) => {
       assignmentInfo: {
         title: assignmentTitle,
         instructions: assignmentInstructions,
-        deadline: new Date(
-          Date.UTC(
-            assignmentDeadline.split("-")[0],
-            assignmentDeadline.split("-")[1] - 1,
-            assignmentDeadline.split("-")[2]
-          )
-        ),
+        deadline: new Date(timestamp),
       },
     });
 

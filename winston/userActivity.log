@@ -7106,3 +7106,49 @@
 {"label":"USER ACTIVITY","level":"info","message":"From: null to student@student.com - User has signed in.","timestamp":"09-28-22 13:09:71"}
 {"label":"USER ACTIVITY","level":"info","message":"From: null to student2@student2.com - User has signed in.","timestamp":"09-28-22 13:09:79"}
 {"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"09-28-22 13:09:40"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:57"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 10:10:79"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:00"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 10:10:32"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:43"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 10:10:78"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:06"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 10:10:49"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:63"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 10:10:98"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student2@student2.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:94"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has signed up.","timestamp":"10-03-22 10:10:93"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has confirmed their account.","timestamp":"10-03-22 10:10:39"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has signed in.","timestamp":"10-03-22 10:10:93"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed up.","timestamp":"10-03-22 10:10:29"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to student@student.com - User has signed up.","timestamp":"10-03-22 10:10:63"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to ssoydabas41@gmail.com - User has signed in.","timestamp":"10-03-22 10:10:24"}
+{"label":"USER ACTIVITY","level":"info","message":"From: ssoydabas41@gmail.com to teacher@teacher.com - Personal Information has been changed.","timestamp":"10-03-22 10:10:47"}
+{"label":"USER ACTIVITY","level":"info","message":"From: ssoydabas41@gmail.com to student@student.com - Personal Information has been changed.","timestamp":"10-03-22 10:10:44"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Student has been assigned to teacher.","timestamp":"10-03-22 10:10:81"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to student@student.com - User has signed in.","timestamp":"10-03-22 10:10:21"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"10-03-22 10:10:21"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:07"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:86"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:68"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 10:10:03"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:85"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 10:10:18"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 10:10:77"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 11:10:04"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 11:10:97"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 11:10:06"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 11:10:65"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 11:10:13"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to student@student.com - User has signed in.","timestamp":"10-03-22 11:10:11"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"10-03-22 11:10:21"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 11:10:78"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 11:10:20"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 12:10:70"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has concluded a lesson for student.","timestamp":"10-03-22 12:10:01"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has added an assignment for student. (Assignment Title: Ass 1 Assignment ID: 633ab5b284e4b41fbce51e2f)","timestamp":"10-03-22 13:10:73"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to student@student.com - User has signed in.","timestamp":"10-03-22 13:10:50"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Student has completed assignment. (Assignment Title: Ass 1 Assignment ID: 633ab5b284e4b41fbce51e2f)","timestamp":"10-03-22 13:10:64"}
+{"label":"USER ACTIVITY","level":"info","message":"From: null to teacher@teacher.com - User has signed in.","timestamp":"10-03-22 13:10:03"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has marked an assignment. (Assignment Title: Ass 1 Assignment ID: 633ab5b284e4b41fbce51e2f)","timestamp":"10-03-22 13:10:82"}
+{"label":"USER ACTIVITY","level":"info","message":"From: teacher@teacher.com to student@student.com - Teacher has planned a lesson for student.","timestamp":"10-03-22 15:10:25"}
