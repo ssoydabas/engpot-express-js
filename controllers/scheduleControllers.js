@@ -48,6 +48,18 @@ export const post_updatePublicSchedule = async (req, res, next) => {
       });
     }
 
+    if (!event.title) {
+      const error = new Error("Student name is required.");
+      error.statusCode = 422;
+      throw error;
+    }
+
+    if (!event.start || !event.end) {
+      const error = new Error("Starting and ending times are required.");
+      error.statusCode = 422;
+      throw error;
+    }
+
     const checkEvent_before = new Date(event.start).getTime() - 3600000;
     const checkEvent_after = new Date(event.start).getTime() + 3600000;
 
