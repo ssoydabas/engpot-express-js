@@ -20,7 +20,7 @@ export const sendConfirmationCode_mail = ({ user, emailConfirmationCode }) => {
     subject: "Welcome to EngPot English!",
     html: `<h1>${user.personalInfo.name} ${user.personalInfo.surname}</h1>
         <h2>You have one more step to truly join our community. You need to click the link below to confirm your email.</h2>
-        <h1>Link: <a href="${process.env.WEB_APP_URL}/userProfile/confirmYourAccount/${emailConfirmationCode}">click here</a></h2>
+        <h1>Link: <a href="${process.env.WEB_APP_URL}/v1/user/confirmAccount/${emailConfirmationCode}">click here</a></h2>
         <p>If you think that there may be a mistake, please contact us.</p>
         <h3>EngPot English: engpotenglish@gmail.com</h3>
         `,
