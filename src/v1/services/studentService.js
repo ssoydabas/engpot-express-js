@@ -4,6 +4,7 @@ import AssignmentHistory from "../../models/assignmentHistoryModel.js";
 
 import checkIf from "../../util/validation/student/checkIf.js";
 import replaceQuotes from "../../util/validation/student/replaceQuotes.js";
+import { completeSingleAssignment_mail } from "../../mail/custom/mails.js";
 
 const fetchLessonHistory = async (studentId, teacherId) => {
   try {
@@ -97,8 +98,12 @@ const completeSingleAssignment = async (
 
     await assignment.save();
 
+    const student = await User.findById(studentId);
+
+    const teacher = await User.findById(assignment.teacherId);
+
     // Handle Logging
-    // Handle Mailing
+    completeSingleAssignment_mail({ teacher, student, assignment });
 
     return { message: `You have successfully sent your response.` };
   } catch (error) {

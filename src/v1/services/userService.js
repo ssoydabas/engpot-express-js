@@ -3,6 +3,13 @@ import bcrypt from "bcrypt";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
 
+import {
+  createUser_mail,
+  sendConfirmationCode_mail,
+  confirmUserAccount_mail,
+  requestNewPassword_mail,
+  resetPassword_mail,
+} from "../../mail/custom/mails.js";
 import checkIf from "../../util/validation/user/checkIf.js";
 
 const fetchUsers = async () => {
@@ -37,7 +44,7 @@ const createUser = async (newUserInformation) => {
       "personalInfo.emailInfo.email": email,
     });
 
-    await checkIf.userExist(user);
+    checkIf.userExist(user);
 
     const hashedPassword = await bcrypt.hash(password, 12);
     const emailConfirmationCode = crypto.randomBytes(32).toString("hex");
@@ -60,7 +67,7 @@ const createUser = async (newUserInformation) => {
 
     // Handle Logging
 
-    // Handle Mailing
+    createUser_mail({ user: newUser, emailConfirmationCode });
 
     return {
       message:
@@ -103,6 +110,8 @@ const verifyUser = async (email, password) => {
       jwtData.options
     );
 
+    // Handle Logging
+
     return { message: "User found.", user, authenticationToken };
   } catch (error) {
     throw error;
@@ -118,16 +127,10 @@ const sendConfirmationCode = async (email) => {
     checkIf.userPresent(user);
 
     if (user.personalInfo.emailInfo.confirmed === false) {
-      // sendMail(
-      //   user.personalInfo.emailInfo.email,
-      //   customEmails.auth.signUp.title,
-      //   customEmails.auth.signUp.text(
-      //     user,
-      //     process.env.WEB_APP_URL,
-      //     user.personalInfo.emailInfo.emailConfirmationCode
-      //   ),
-      //   true
-      // );
+      sendConfirmationCode_mail({
+        user: user,
+        confirmationCode: user.personalInfo.emailInfo.emailConfirmationCode,
+      });
 
       return {
         message: "Your confirmation email has been sent to your email.",
@@ -151,6 +154,8 @@ const confirmUserAccount = async (emailConfirmationCode) => {
     user.personalInfo.emailInfo.confirmed = true;
     await user.save();
 
+    confirmUserAccount_mail({ user });
+
     return { message: "You can sign in now." };
   } catch (error) {
     throw error;
@@ -173,14 +178,7 @@ const requestNewPassword = async (email) => {
 
     await user.save();
 
-    // sendMail(
-    //   email,
-    //   customEmails.auth.forgotPassword.title,
-    //   customEmails.auth.forgotPassword.text(
-    //     process.env.WEB_APP_URL,
-    //     generatedResetToken
-    //   )
-    // );
+    requestNewPassword_mail({ email, generatedResetToken });
 
     // Handle Logging
 
@@ -213,6 +211,8 @@ const resetPassword = async (newPassword, newPasswordConfirm, resetToken) => {
     user.personalInfo.passwordInfo.password = hashedPassword;
 
     await user.save();
+
+    resetPassword_mail({ user });
 
     return { message: "You have successfully changed your  password." };
   } catch (error) {

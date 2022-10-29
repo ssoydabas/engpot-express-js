@@ -5,6 +5,13 @@ import TeacherStudent from "../../models/teacherStudentModel.js";
 import checkIf from "../../util/validation/admin/checkIf.js";
 import preventDataLoss from "../../util/validation/admin/preventDataLoss.js";
 import updatedUser from "../../util/validation/admin/updateUser.js";
+import {
+  editUserInformation_mail,
+  createTeacherStudent_mail_student,
+  createTeacherStudent_mail_teacher,
+  deleteTeacherStudent_mail_student,
+  deleteTeacherStudent_mail_teacher,
+} from "../../mail/custom/mails.js";
 
 const editUserInformation = async (data) => {
   try {
@@ -66,8 +73,9 @@ const editUserInformation = async (data) => {
 
     await user.save();
 
+    editUserInformation_mail({ user });
+
     // Handle Logging
-    // Handle Mailing
 
     return { message: "User information has been updated" };
   } catch (error) {
@@ -82,6 +90,7 @@ const createTeacherStudent = async (studentId, teacherId) => {
     checkIf.teacherStudentRelationExist(TeacherStudent, studentId, teacherId);
 
     const student = await User.findById(studentId);
+    const teacher = await User.findById(teacherId);
 
     checkIf.studentHasTeacher(student);
 
@@ -97,7 +106,8 @@ const createTeacherStudent = async (studentId, teacherId) => {
     await student.save();
 
     // Handle Logging
-    // Handle Mailing
+    createTeacherStudent_mail_student({ student, teacher });
+    createTeacherStudent_mail_teacher({ teacher, student });
 
     return { message: "Student has been assigned to the teacher" };
   } catch (error) {
@@ -115,13 +125,15 @@ const deleteTeacherStudent = async (studentId, teacherId) => {
     });
 
     const student = await User.findById(studentId);
+    const teacher = await User.findById(teacherId);
 
     student.engPotInfo.hasTeacher = false;
 
     await student.save();
 
     // Handle Logging
-    // Handle Mailing
+    deleteTeacherStudent_mail_student({ student, teacher });
+    deleteTeacherStudent_mail_teacher({ teacher, student });
 
     return { message: "Teacher has been removed from student" };
   } catch (error) {

@@ -1,1 +1,5 @@
 [2022-10-28T10:05:29.541Z] error: BAM BAM
+[2022-10-28T14:51:27.645Z] error: Cannot read properties of null (reading 'personalInfo')
+[2022-10-28T14:52:47.560Z] error: Email already exists.
+[2022-10-28T14:54:45.524Z] error: Cannot read properties of null (reading 'personalInfo')
+[2022-10-28T15:16:59.946Z] error: The student's EngPot Credits is not enough to plan a lesson.

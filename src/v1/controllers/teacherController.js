@@ -18,7 +18,7 @@ const planLesson = async (req, res, next) => {
 
     res.send({ status: "OK", ...isPlanningSuccessful });
   } catch (error) {
-    throw error;
+    next(error);
   }
 };
 

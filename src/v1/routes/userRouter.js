@@ -14,7 +14,7 @@ router.post("/verifyUser", userController.verifyUser);
 
 router.post("/sendConfirmationCode", userController.sendConfirmationCode);
 
-router.post("/confirmAccount/:emailConfirmationCode", userController.confirmUserAccount);
+router.get("/confirmAccount/:emailConfirmationCode", userController.confirmUserAccount);
 
 router.post("/requestNewPassword", userController.requestNewPassword);
 

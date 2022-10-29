@@ -5,7 +5,7 @@ const { combine, timestamp, json, errors, printf } = format;
 const computerReadableLog = createLogger({
   format: combine(errors({ stack: true }), timestamp(), json()),
   transports: [
-    new transports.Console({ level: "info" }),
+    // new transports.Console({ level: "info" }),
     new transports.File({
       level: "error",
       filename: "src/log/logs/error.log",

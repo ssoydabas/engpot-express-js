@@ -7,6 +7,12 @@ import checkIf from "../../util/validation/teacher/checkIf.js";
 import replaceQuotes from "../../util/validation/teacher/replaceQuotes.js";
 import updateStudentNextLesson from "../../util/validation/teacher/updateStudentNextLesson.js";
 import finalizeLesson from "../../util/validation/teacher/finalizeLesson.js";
+import {
+  planLesson_mail,
+  assignTask_mail,
+  markTask_mail,
+} from "../../mail/custom/mails.js";
+import convertIsoToObject from "../../util/ISO_to_OBJ.js";
 
 const engPotCreditsPerLesson = 10;
 
@@ -70,7 +76,8 @@ const planLesson = async (data) => {
     await student.save();
 
     // Handle Logging
-    // Handle Mailing
+    const dateObject = convertIsoToObject(timestamp);
+    planLesson_mail({ student, dateObject });
 
     return { message: `Lesson has been planned.`, student };
   } catch (error) {
@@ -173,7 +180,7 @@ const assignTask = async (data) => {
     const student = await User.findById(studentId);
 
     // Handle Logging
-    // Handle Mailing
+    assignTask_mail({ student, assignment: newAssignment });
 
     return { message: "Assignment has been added to the student.", student };
   } catch (error) {
@@ -197,6 +204,9 @@ const markTask = async (data) => {
     await assignment.save();
 
     const student = await User.findById(assignment.studentId);
+    const teacher = await User.findById(assignment.teacherId);
+
+    markTask_mail({ student, teacher, assignment });
 
     return { message: `You have successfully marked the assignment.`, student };
   } catch (error) {
