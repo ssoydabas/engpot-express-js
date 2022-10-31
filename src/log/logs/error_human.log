@@ -20,3 +20,48 @@
 [2022-10-31T12:22:52.867Z] error: Only regular users can be deleted. Change the account status first.
 [2022-10-31T12:25:27.257Z] error: Only regular users can be deleted. Change the account status first.
 [2022-10-31T12:25:31.364Z] error: This student has a teacher, remove teacher first.
+[2022-10-31T14:37:19.046Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:37:52.958Z] error: jwt must be provided
+[2022-10-31T14:38:27.058Z] error: jwt must be provided
+[2022-10-31T14:39:51.590Z] error: jwt must be provided
+[2022-10-31T14:40:04.908Z] error: jwt must be provided
+[2022-10-31T14:40:27.951Z] error: jwt must be provided
+[2022-10-31T14:40:57.167Z] error: invalid token
+[2022-10-31T14:42:04.831Z] error: Only teachers are allowed to reach this route.
+[2022-10-31T14:42:54.853Z] error: Only teachers are allowed to reach this route.
+[2022-10-31T14:43:01.669Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:44:08.821Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:44:08.904Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:49:44.653Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:50:48.515Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:51:23.819Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:52:01.787Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:53:29.606Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:53:29.615Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:55:51.642Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:55:51.658Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:57:18.402Z] error: Cannot access 'authenticationToken' before initialization
+[2022-10-31T14:57:18.430Z] error: Cannot access 'authenticationToken' before initialization
+[2022-10-31T14:57:30.214Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:57:30.228Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:59:12.159Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T14:59:12.176Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:01:11.880Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:01:11.886Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:02:09.743Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:02:09.759Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:02:52.620Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:02:52.626Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:04:27.817Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:04:27.828Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:07:05.184Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:07:05.193Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:07:55.075Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:07:55.084Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:08:39.849Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:08:39.857Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:09:18.885Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:09:18.892Z] error: Cannot read properties of undefined (reading 'split')
+[2022-10-31T15:25:05.313Z] error: Only admins are allowed to reach this route.
+[2022-10-31T15:25:05.327Z] error: Only admins are allowed to reach this route.
+[2022-10-31T15:49:03.718Z] error: Student name is required.

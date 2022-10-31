@@ -2,16 +2,43 @@ import express from "express";
 
 import teacherController from "../controllers/teacherController.js";
 
+import { isAuthenticated, isTeacher } from "./util/routeProtection.js";
+
 const router = express.Router();
 
-router.get("/studentsByTeacherId/:teacherId", teacherController.studentsByTeacherId);
+router.get(
+  "/studentsByTeacherId/:teacherId",
+  isAuthenticated,
+  isTeacher,
+  teacherController.studentsByTeacherId
+);
 
-router.post("/planLesson", teacherController.planLesson);
+router.post(
+  "/planLesson",
+  isAuthenticated,
+  isTeacher,
+  teacherController.planLesson
+);
 
-router.post("/concludeLesson", teacherController.concludeLesson);
+router.post(
+  "/concludeLesson",
+  isAuthenticated,
+  isTeacher,
+  teacherController.concludeLesson
+);
 
-router.post("/assignTask", teacherController.assignTask);
+router.post(
+  "/assignTask",
+  isAuthenticated,
+  isTeacher,
+  teacherController.assignTask
+);
 
-router.post("/markTask", teacherController.markTask);
+router.post(
+  "/markTask",
+  isAuthenticated,
+  isTeacher,
+  teacherController.markTask
+);
 
 export default router;
