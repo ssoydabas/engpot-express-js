@@ -77,6 +77,20 @@ const studentHasTeacher = (student) => {
   }
 };
 
+const isRegularUserAccount = (user) => {
+  if (
+    user.engPotInfo.status === "teacher" ||
+    user.engPotInfo.status === "student" ||
+    user.engPotInfo.status === "admin"
+  ) {
+    const error = new Error(
+      "Only regular users can be deleted. Change the account status first."
+    );
+    error.statusCode = 422;
+    throw error;
+  }
+};
+
 const checkIf = {
   userExist,
   nameSurnamePresent,
@@ -87,6 +101,7 @@ const checkIf = {
   IDsPresent,
   teacherStudentRelationExist,
   studentHasTeacher,
+  isRegularUserAccount,
 };
 
 export default checkIf;

@@ -90,9 +90,12 @@ const deleteUser = async (userId) => {
 
     checkIf.userExist(user);
 
+    checkIf.isRegularUserAccount(user);
+
     const userInformation = {
       personalInfo: user.personalInfo,
       engPotInfo: user.engPotInfo,
+      deletedUserId: user._id,
     };
 
     const deletedUser = new DeletedUser(userInformation);
