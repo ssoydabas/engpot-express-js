@@ -3,3 +3,7 @@
 [2022-10-28T14:52:47.560Z] error: Email already exists.
 [2022-10-28T14:54:45.524Z] error: Cannot read properties of null (reading 'personalInfo')
 [2022-10-28T15:16:59.946Z] error: The student's EngPot Credits is not enough to plan a lesson.
+[2022-10-31T11:14:30.410Z] error: Cast to ObjectId failed for value "{ userId: '635fadcb76e5a08825cb8d6e' }" (type Object) at path "_id" for model "User"
+[2022-10-31T11:15:39.784Z] error: Cast to ObjectId failed for value "{ userId: '635fadcb76e5a08825cb8d6e' }" (type Object) at path "_id" for model "User"
+[2022-10-31T11:16:35.554Z] error: Found non-callable @@iterator
+[2022-10-31T11:19:40.335Z] error: No document found for query "{ _id: new ObjectId("635fadcb76e5a08825cb8d6e") }" on model "DeletedUser"

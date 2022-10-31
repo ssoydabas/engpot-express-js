@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import User from "../../models/userModel.js";
 import TeacherStudent from "../../models/teacherStudentModel.js";
+import DeletedUser from "../../models/deletedUserModel.js";
 
 import checkIf from "../../util/validation/admin/checkIf.js";
 import preventDataLoss from "../../util/validation/admin/preventDataLoss.js";
@@ -78,6 +79,29 @@ const editUserInformation = async (data) => {
     // Handle Logging
 
     return { message: "User information has been updated" };
+  } catch (error) {
+    throw error;
+  }
+};
+
+const deleteUser = async (userId) => {
+  try {
+    const user = await User.findById(userId);
+
+    checkIf.userExist(user);
+
+    const userInformation = {
+      personalInfo: user.personalInfo,
+      engPotInfo: user.engPotInfo,
+    };
+
+    const deletedUser = new DeletedUser(userInformation);
+
+    await deletedUser.save();
+
+    await user.remove();
+
+    return { message: "User deleted successfully." };
   } catch (error) {
     throw error;
   }
@@ -168,6 +192,7 @@ const contactAdmins = async () => {};
 
 const services = {
   editUserInformation,
+  deleteUser,
   createTeacherStudent,
   deleteTeacherStudent,
   findTeacherByStudentId,

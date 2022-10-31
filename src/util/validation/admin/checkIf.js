@@ -1,3 +1,11 @@
+const userExist = (user) => {
+  if (!user) {
+    const error = new Error("User does not exist.");
+    error.statusCode = 422;
+    throw error;
+  }
+};
+
 const nameSurnamePresent = (name, surname) => {
   if (name === "" || surname === "") {
     const error = new Error("Name and Surname are required.");
@@ -70,6 +78,7 @@ const studentHasTeacher = (student) => {
 };
 
 const checkIf = {
+  userExist,
   nameSurnamePresent,
   validEmail,
   engPotTokenLimitRespected,

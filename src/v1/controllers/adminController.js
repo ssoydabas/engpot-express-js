@@ -10,6 +10,18 @@ const editUserInformation = async (req, res, next) => {
   }
 };
 
+const deleteUser = async (req, res, next) => {
+  try {
+    const { userId } = req.body;
+
+    const isUserDeleted = await adminService.deleteUser(userId);
+
+    res.send({ status: "OK", ...isUserDeleted });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const createTeacherStudent = async (req, res, next) => {
   try {
     const { studentId, teacherId } = req.body;
@@ -29,7 +41,10 @@ const deleteTeacherStudent = async (req, res, next) => {
   try {
     const { studentId, teacherId } = req.body;
 
-    const isDeleted = await adminService.deleteTeacherStudent(studentId, teacherId);
+    const isDeleted = await adminService.deleteTeacherStudent(
+      studentId,
+      teacherId
+    );
 
     res.send({ status: "OK", ...isDeleted });
   } catch (error) {
@@ -55,6 +70,7 @@ const contactAdmins = async (req, res, next) => {
 
 const controllers = {
   editUserInformation,
+  deleteUser,
   createTeacherStudent,
   deleteTeacherStudent,
   findTeacherByStudentId,

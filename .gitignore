@@ -3,3 +3,5 @@ node_modules
 .eslintrc.json
 
 winston
+
+src/log/logs
