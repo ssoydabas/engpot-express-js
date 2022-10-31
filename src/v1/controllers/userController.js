@@ -72,7 +72,7 @@ const confirmUserAccount = async (req, res, next) => {
 
     const isConfirmed = userService.confirmUserAccount(emailConfirmationCode);
 
-    res.status(201).json({ status: "OK", data: isConfirmed });
+    res.status(201).json({ status: "OK", ...isConfirmed });
   } catch (error) {
     throw error;
   }
