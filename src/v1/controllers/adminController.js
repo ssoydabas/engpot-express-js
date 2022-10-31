@@ -65,7 +65,15 @@ const findTeacherByStudentId = async (req, res, next) => {
 };
 
 const contactAdmins = async (req, res, next) => {
-  // ! Will be done
+  try {
+    const { name, email, body } = req.body;
+
+    const isContacted = await adminService.contactAdmins(name, email, body);
+
+    res.send({ status: "OK", ...isContacted });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const controllers = {

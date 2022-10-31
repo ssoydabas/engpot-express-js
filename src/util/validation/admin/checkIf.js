@@ -91,6 +91,14 @@ const isRegularUserAccount = (user) => {
   }
 };
 
+const contactInfoPresent = (name, body) => {
+  if(!name || !body) {
+    const error = new Error("User name and subject are required.");
+    error.statusCode = 422;
+    throw error;
+  }
+}
+
 const checkIf = {
   userExist,
   nameSurnamePresent,
@@ -102,6 +110,7 @@ const checkIf = {
   teacherStudentRelationExist,
   studentHasTeacher,
   isRegularUserAccount,
+  contactInfoPresent,
 };
 
 export default checkIf;

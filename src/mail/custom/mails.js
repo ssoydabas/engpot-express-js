@@ -105,7 +105,17 @@ export const deleteTeacherStudent_mail_teacher = ({ teacher, student }) => {
   });
 };
 
-export const contactAdmins_mail = ({}) => {}; // todo
+export const contactAdmins_mail = ({ email, name, body }) => {
+  mail({
+    recipient: process.env.OAUTH_ADMIN_EMAIL,
+    subject: name,
+    html: `<h1>A new user wants to reach EngPot English!</h1>
+    <h2>User name: ${name}</h2>
+    <h2>${body}</h2>
+    <h3>User email: ${email}</h2>
+  `,
+  });
+};
 
 // Teacher Service
 export const planLesson_mail = ({ student, dateObject }) => {
@@ -157,4 +167,3 @@ export const completeSingleAssignment_mail = ({
         `,
   });
 };
-

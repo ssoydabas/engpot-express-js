@@ -6,12 +6,14 @@ import DeletedUser from "../../models/deletedUserModel.js";
 import checkIf from "../../util/validation/admin/checkIf.js";
 import preventDataLoss from "../../util/validation/admin/preventDataLoss.js";
 import updatedUser from "../../util/validation/admin/updateUser.js";
+import replaceQuotes from "../../util/validation/admin/replaceQuotes.js";
 import {
   editUserInformation_mail,
   createTeacherStudent_mail_student,
   createTeacherStudent_mail_teacher,
   deleteTeacherStudent_mail_student,
   deleteTeacherStudent_mail_teacher,
+  contactAdmins_mail,
 } from "../../mail/custom/mails.js";
 
 const editUserInformation = async (data) => {
@@ -191,7 +193,25 @@ const findTeacherByStudentId = async (studentId) => {
   }
 };
 
-const contactAdmins = async () => {};
+const contactAdmins = async (name, email, body) => {
+  try {
+    checkIf.validEmail(email);
+
+    checkIf.contactInfoPresent(name, body);
+
+    name = replaceQuotes(name);
+    body = replaceQuotes(body);
+
+    contactAdmins_mail({ name, email, body });
+
+    return {
+      message:
+        "Your request has been received. Our admins will contact you soon.",
+    };
+  } catch (error) {
+    throw error;
+  }
+};
 
 const services = {
   editUserInformation,
