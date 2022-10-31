@@ -14,6 +14,7 @@ if (process.env.NODE_ENV.trim() === "development") {
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+import helmet from "helmet";
 
 import setHeaders from "./util/setHeaders.js";
 
@@ -23,6 +24,8 @@ import errorHandler from "./v1/routes/util/errorHandler.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(setHeaders);
