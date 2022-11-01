@@ -20,6 +20,8 @@ import setHeaders from "./util/setHeaders.js";
 
 import v1Router from "./v1/routes/util/routesBundler.js";
 
+import reminders from "./reminder/bundler.js";
+
 import errorHandler from "./v1/routes/util/errorHandler.js";
 
 const app = express();
@@ -37,6 +39,8 @@ app.use("/v1/teacher", v1Router.teacherRouter);
 app.use("/v1/schedule", v1Router.scheduleRouter);
 
 app.use(errorHandler);
+
+reminders();
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
   app.listen(PORT);

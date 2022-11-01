@@ -1,12 +1,12 @@
 const convertIsoToObject = (isoString) => {
-    const toLocalISOString = (date) => {
+    const toTurkeyISOString = (date) => {
       date = new Date(date).getTime();
-      const germany_turkey_Offset = 180 * 60000; // +3 hours
+      const turkey_Offset = 180 * 60000; // +3 hours
       
-      const localISOTime = new Date(date + germany_turkey_Offset).toISOString();
+      const localISOTime = new Date(date + turkey_Offset).toISOString();
       return localISOTime;
     };
-    isoString = toLocalISOString(isoString);
+    isoString = toTurkeyISOString(isoString);
   
     const date = isoString.split("T")[0];
     const time = isoString.split("T")[1];
